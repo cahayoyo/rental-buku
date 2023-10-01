@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // $request->session()->flush();
-        dd('kimak');
+        return view('pages.books.books');
     }
 }
