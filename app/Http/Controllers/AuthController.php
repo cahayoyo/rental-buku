@@ -18,8 +18,7 @@ class AuthController extends Controller
         return view('pages.register.register');
     }
 
-    public function authenticating(Request 
-    $request)
+    public function authenticating(Request $request)
     {
         $credentials = $request -> validate([
             'username' => ['required'],
@@ -28,6 +27,10 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             if(Auth::user()->status != 'active'){
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
                 Session::flash('status','failed');
                 Session::flash('message','Your account is not active yet. please contact admin!');
                 return redirect('/login');

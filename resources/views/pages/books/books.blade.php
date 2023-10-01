@@ -10,6 +10,8 @@
 <body>
     <h1>INI HALAMAN BOOK</h1>
 
+    {{$user}}
+
     <form action="/logout" method="">
         @csrf
         <button class="btn btn-primary">logout</button>

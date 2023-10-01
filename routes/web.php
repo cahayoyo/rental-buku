@@ -27,6 +27,9 @@ Route::middleware('only_guest')->group(function(){
     Route::get('/register',[AuthController::class,'register']);
 });
 
+
+
+
 Route::middleware('auth')->group(function(){
     Route::get('/logout',[AuthController::class,'logout']);
     Route::get('/dashboard',[DashboardController::class,'index'])->middleware('only_admin');
