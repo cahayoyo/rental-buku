@@ -12,7 +12,7 @@
         height: 100vh;
         box-sizing: border-box;
     }
-    .login-box{
+    .register-box{
         width: 500px;
         border: solid 1px;
         padding: 30px;
@@ -23,21 +23,24 @@
 </style>
 <body>
     <div class="main d-flex justify-content-center align-items-center">
-        <div class="login-box">
-            <form action="" method="post">
-                @csrf
-                <div>
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required>
-                </div>
-                <div>
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" name="address" id="address" class="form-control" required>
-                </div>
-                <div>
-                    <label for="phone" class="form-label">Phone</label>
-                    <input type="text" name="phone" id="phone" class="form-control" required>
-                </div>
+        @if ($errors->any())
+            <div class="alert alert-danger" style="width: 500px">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>            
+        @endif
+
+        @if (session('status'))
+            <div class="alert alert-success" style="width: 500px">
+                {{session('message')}}
+            </div>
+        @endif
+        <div class="register-box">     
+            <form action="/register" method="post">
+                @csrf         
                 <div>
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required>
@@ -51,10 +54,18 @@
                     <input type="password" name="password" id="password" class="form-control" required>
                 </div>
                 <div>
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" name="phone" id="phone" class="form-control" required>
+                </div>
+                <div>
+                    <label for="address" class="form-label">Address</label>
+                    <textarea name="address" id="address" class="form-control" rows="3"></textarea>
+                </div>
+                <div>
                     <button type="submit" class="btn btn-primary form-control">Register</button>
                 </div>
                 <div class="text-center">
-                    <a href="/login" class="">Login</a>
+                    Already have account? <a href="/login" class="">Login</a>
                 </div>
             </form>
         </div>
