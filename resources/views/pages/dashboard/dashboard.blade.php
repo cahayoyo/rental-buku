@@ -6,7 +6,7 @@
     
     <h1>Welcome, {{Auth::user()->username}}</h1>
 
-    <div class="row mt-5">
+    <div class="row my-5">
         <div class="col-lg-4">
             <div class="card-data users">
                 <div class="row">
@@ -40,6 +40,28 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="mt-5">
+        <h2>Rent Logs</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>User</th>
+                    <th>Book Title</th>
+                    <th>Rent Date</th>
+                    <th>Return Date</th>
+                    <th>Actual Return Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7" class="text-center">No Data Yet!</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 @endsection

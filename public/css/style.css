@@ -16,7 +16,7 @@
 }
 .active{
     background: black;
-    border-right: solid 3px red;
+    border-right: solid 6px red;
 }
 .card-data{
     border: solid 1px;
