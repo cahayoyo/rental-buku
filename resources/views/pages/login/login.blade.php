@@ -29,7 +29,7 @@
             </div>
         @endif
         <div class="login-box">
-            <form action="" method="post">
+            <form action="/login" method="post">
                 @csrf
                 <div>
                     <label for="username" class="form-label">Username</label>
