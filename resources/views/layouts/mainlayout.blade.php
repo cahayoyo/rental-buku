@@ -6,42 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Rental Buku | @yield('title')</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
-<style>
-    .main{
-        height: 100vh;
-    }
-    .sidebar{
-        background-color: darkblue;
-        color: white;
-    }
-    .sidebar a{
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 20px 10px;
-    }
-    .sidebar a:hover{
-        background: black;
-    }
-</style>
 <body>
     <div class="main d-flex flex-column justify-content-between">
         @include('layouts.navbar')
         <div class="body-content h-100">
             <div class="row g-0 h-100">
                 <div class="sidebar col-lg-2 collapse d-lg-block" id="navbarTogglerDemo02">
-                        @if (Auth::user()->role_id == 1)
-                            <a href="/dashboard">Dashboard</a> 
-                            <a href="/users">Users</a> 
-                            <a href="/books">Books</a> 
-                            <a href="/categories">Categories</a> 
-                            <a href="">Rent Logs</a> 
-                            <a href="/logout">Logout</a> 
-                        @else 
-                            <a href="/profile">Profile</a> 
-                            <a href="/logout">Logout</a> 
-                        @endif        
+                    @include('layouts.sidebar')
                 </div>
                 <div class="content p-5 col-lg-10">
                     @yield('content')

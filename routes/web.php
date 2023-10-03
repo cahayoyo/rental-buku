@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RentLogController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +34,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/logout',[AuthController::class,'logout']);
     Route::get('/dashboard',[DashboardController::class,'index'])->middleware('only_admin');
     Route::get('/profile',[UserController::class,'profile'])->middleware('only_client');
+    Route::get('/users',[UserController::class,'index']);
+    Route::get('/categories',[CategoryController::class,'index']);
+    Route::get('/rent_logs',[RentLogController::class,'index']);
     Route::get('/books',[BookController::class,'index']);
 });
